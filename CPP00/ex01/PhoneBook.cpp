@@ -1,6 +1,5 @@
 #include "PhoneBook.hpp"
 
-// Function to add a contact
 void addContact(Contact contacts[], int& count) {
     if (count < 8) {
         std::cout << "Enter first name: ";
