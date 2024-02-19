@@ -6,20 +6,18 @@
 #    By: nmaquet <nmaquet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 15:29:32 by nmaquet           #+#    #+#              #
-#    Updated: 2024/02/19 15:39:19 by nmaquet          ###   ########.fr        #
+#    Updated: 2024/02/19 15:46:51 by nmaquet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= zombie
+NAME    = zombie
+SRC     = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+OBJ     = $(addprefix obj/, $(SRC:.cpp=.o))
+CPP     = c++
+CPPFLAGS    = -Wall -Wextra -Werror -std=c++98
 
-SRC		= main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
-OBJ		= $(SRC:.cpp=.o)
-
-CPP		=	c++
-CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
-
-
-%.o : %.cpp
+obj/%.o : %.cpp
+	@mkdir -p obj
 	@$(CPP) $(CPPFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ)
@@ -27,12 +25,11 @@ $(NAME) : $(OBJ)
 
 all : $(NAME)
 
-
 clean :
-	@rm -rf $(OBJ)
+	@rm -rf obj
 
 fclean : clean
-	@rm -rf $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
 
