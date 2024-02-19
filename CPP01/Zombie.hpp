@@ -6,13 +6,13 @@
 /*   By: nmaquet <nmaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:34:07 by nmaquet           #+#    #+#             */
-/*   Updated: 2024/02/19 15:40:44 by nmaquet          ###   ########.fr       */
+/*   Updated: 2024/02/19 15:49:27 by nmaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
 
 #include <string>
 #include <iostream>
