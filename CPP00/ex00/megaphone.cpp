@@ -22,12 +22,7 @@ int main(int argc, char* argv[]) {
         for (size_t j = 0; j < arg.length(); ++j) {
             arg[j] = std::toupper(arg[j]);
         }
-
         std::cout << arg;
-        if (i != argc - 1)
-            std::cout << " ";
     }
-
-    std::cout << std::endl;
     return 0;
 }
