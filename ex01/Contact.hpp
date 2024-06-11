@@ -23,4 +23,4 @@ public:
     const std::string& getSecret() const;
 };
 
-#endif // CONTACT_HPP
+#endif

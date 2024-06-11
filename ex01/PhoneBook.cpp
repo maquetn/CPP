@@ -15,7 +15,6 @@ void PhoneBook::addContact(const Contact& newContact) {
         for (int i = 0; i < 7; ++i) {
             contacts[i] = contacts[i + 1];
         }
-        // Add the new contact at the end
         contacts[7] = newContact;
     }
 }
@@ -32,7 +31,7 @@ if (count == 0) {
               << std::setw(10) << "First Name" << " | "
               << std::setw(10) << "Last Name" << " | "
               << std::setw(10) << "Nickname" << std::endl;
-    std::cout << "-------------------------------------------------" << std::endl; // Separator line
+    std::cout << "-------------------------------------------------" << std::endl;
 
     for (int i = 0; i < count; ++i) {
         // Truncate and replace with a dot if the text is longer than 10 characters
@@ -60,12 +59,14 @@ if (count == 0) {
 
     while (!(std::cin >> index)) {
     // If input is not an integer, clear the input stream and ignore the invalid input
+    if (std::cin.eof()) {
+        std::cout << "\nExiting program. (EOF)\n";
+        break;}
     std::cout << "Invalid input. Please enter a valid index." << std::endl; 
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    // Prompt again for input
-    std::cout << "\nEnter the index of the entry to display: ";
-}
+    
+    }
 
     // Validate index
     if (index < 1 || index > count) {
@@ -74,6 +75,7 @@ if (count == 0) {
     }
 
     // Display contact information for the selected index
+    if (!std::cin.eof()) {
     const Contact& selectedContact = contacts[index - 1];
     std::cout << "\n\033[1;32mContact Information:\033[0m\n" << std::endl;
     std::cout << "First Name: " << selectedContact.getFirstName() << std::endl;
@@ -81,4 +83,5 @@ if (count == 0) {
     std::cout << "Nickname: " << selectedContact.getNickname() << std::endl;
     std::cout << "Phone Number: " << selectedContact.getPhoneNumber() << std::endl;
     std::cout << "Secret: " << selectedContact.getSecret() << std::endl;
+    }
 }

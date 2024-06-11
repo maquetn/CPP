@@ -14,4 +14,4 @@ public:
     void listContacts() const;
 };
 
-#endif // PHONEBOOK_HPP
+#endif

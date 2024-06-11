@@ -6,9 +6,8 @@ int main() {
     PhoneBook phoneBook;
     std::string input;
 
-    while(true) {
-        std::cout << "\033[1;32mEnter :     ADD   |   SEARCH   |   EXIT\033[0m\n";
-        
+    while(!std::cin.eof()){
+    std::cout << "\033[1;32mEnter :     ADD   |   SEARCH   |   EXIT\033[0m\n";
         if (!std::getline(std::cin, input)) {
             if (std::cin.eof()) {
                 std::cout << "\nExiting program. (EOF)\n";
@@ -22,9 +21,8 @@ int main() {
         }
 
         // Find first non-space
-        size_t start = input.find_first_not_of(" \t");
+        size_t start = input.find_first_not_of(" \n\t");
         if (start == std::string::npos) {
-            std::cout << "Invalid input. Please try again." << std::endl;
             continue;
         }
 
