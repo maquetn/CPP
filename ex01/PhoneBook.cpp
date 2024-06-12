@@ -11,7 +11,6 @@ void PhoneBook::addContact(const Contact& newContact) {
         count++;
     } else {
         std::cout << "Maximum contacts reached. Oldest contact will be replaced." << std::endl;
-        // Shift all contacts one position to the left
         for (int i = 0; i < 7; ++i) {
             contacts[i] = contacts[i + 1];
         }
@@ -26,7 +25,6 @@ if (count == 0) {
     }
 
     std::cout << "\n\033[1;32mContacts list:\033[0m\n" << std::endl;
-    // Display column headers
     std::cout << std::right << std::setw(10) << "Index" << " | "
               << std::setw(10) << "First Name" << " | "
               << std::setw(10) << "Last Name" << " | "
@@ -34,7 +32,6 @@ if (count == 0) {
     std::cout << "-------------------------------------------------" << std::endl;
 
     for (int i = 0; i < count; ++i) {
-        // Truncate and replace with a dot if the text is longer than 10 characters
         std::string firstName = contacts[i].getFirstName().substr(0, 10);
         if (contacts[i].getFirstName().length() > 10)
             firstName[9] = '.';
@@ -53,35 +50,26 @@ if (count == 0) {
                   << std::setw(10) << nickname << std::endl;
     }
 
-    // Prompt user for index
     int index;
     std::cout << "\nEnter the index of the entry to display: ";
 
-    while (!(std::cin >> index)) {
-    // If input is not an integer, clear the input stream and ignore the invalid input
-    if (std::cin.eof()) {
-        std::cout << "\nExiting program. (EOF)\n";
-        break;}
-    std::cout << "Invalid input. Please enter a valid index." << std::endl; 
-    std::cin.clear();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    while (!(std::cin >> index) || index < 1 || index > count) {
+        if (std::cin.eof()) {
+            std::cout << "\nExiting program. (EOF)\n";
+            break;}
+        std::cout << "Invalid input. Please enter a valid index." << std::endl; 
+        std::cin.clear(); //clear input stream and ignore invalid input
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     
     }
 
-    // Validate index
-    if (index < 1 || index > count) {
-        std::cout << "Invalid index. Please enter a valid index." << std::endl;
-        return;
-    }
-
-    // Display contact information for the selected index
     if (!std::cin.eof()) {
-    const Contact& selectedContact = contacts[index - 1];
-    std::cout << "\n\033[1;32mContact Information:\033[0m\n" << std::endl;
-    std::cout << "First Name: " << selectedContact.getFirstName() << std::endl;
-    std::cout << "Last Name: " << selectedContact.getLastName() << std::endl;
-    std::cout << "Nickname: " << selectedContact.getNickname() << std::endl;
-    std::cout << "Phone Number: " << selectedContact.getPhoneNumber() << std::endl;
-    std::cout << "Secret: " << selectedContact.getSecret() << std::endl;
+        const Contact& selectedContact = contacts[index - 1];
+        std::cout << "\n\033[1;32mContact Information:\033[0m\n" << std::endl;
+        std::cout << "First Name: " << selectedContact.getFirstName() << std::endl;
+        std::cout << "Last Name: " << selectedContact.getLastName() << std::endl;
+        std::cout << "Nickname: " << selectedContact.getNickname() << std::endl;
+        std::cout << "Phone Number: " << selectedContact.getPhoneNumber() << std::endl;
+        std::cout << "Secret: " << selectedContact.getSecret() << std::endl;
     }
 }

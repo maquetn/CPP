@@ -6,8 +6,8 @@ int main() {
     PhoneBook phoneBook;
     std::string input;
 
-    while(!std::cin.eof()){
     std::cout << "\033[1;32mEnter :     ADD   |   SEARCH   |   EXIT\033[0m\n";
+    while(!std::cin.eof()){
         if (!std::getline(std::cin, input)) {
             if (std::cin.eof()) {
                 std::cout << "\nExiting program. (EOF)\n";
@@ -33,24 +33,21 @@ int main() {
             std::string firstName, lastName, nickname, phoneNumber, secret;
             std::cout << "Enter first name: ";
             std::cin >> firstName;
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear input buffer
             std::cout << "Enter last name: ";
             std::cin >> lastName;
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "Enter nickname: ";
             std::cin >> nickname;
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "Enter phone number: ";
             std::cin >> phoneNumber;
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "Enter secret: ";
             std::cin >> secret;
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
             Contact newContact(firstName, lastName, nickname, phoneNumber, secret);
             phoneBook.addContact(newContact);
+            std::cout << "\033[1;32mEnter :     ADD   |   SEARCH   |   EXIT\033[0m\n";
         } else if (command == "SEARCH") {
             phoneBook.listContacts();
+            std::cout << "\033[1;32mEnter :     ADD   |   SEARCH   |   EXIT\033[0m\n";
         } else if (command == "EXIT") {
             break;
         } else {
