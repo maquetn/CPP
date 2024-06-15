@@ -19,11 +19,11 @@ int main() {
                 continue;
             }
         }
-
+  
         // Find first non-space
         size_t start = input.find_first_not_of(" \n\t");
         if (start == std::string::npos) {
-            continue;
+            continue; 
         }
 
         size_t end = input.find(' ', start);
@@ -34,7 +34,7 @@ int main() {
             std::cout << "Enter first name: ";
             std::cin >> firstName;
             std::cout << "Enter last name: ";
-            std::cin >> lastName;
+            std::cin >> lastName; 
             std::cout << "Enter nickname: ";
             std::cin >> nickname;
             std::cout << "Enter phone number: ";
