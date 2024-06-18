@@ -1,6 +1,6 @@
-NAME	= phonebook
+NAME	= violence
 
-SRC		= PhoneBook.cpp Contact.cpp main.cpp
+SRC		= HumanA.cpp HumanB.cpp Weapon.cpp main.cpp
 OBJ		= $(SRC:.cpp=.o)
 
 CPP		=	c++

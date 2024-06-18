@@ -5,4 +5,4 @@
 
 Zombie* zombieHorde(int N, const std::string& name);
 
-#endif // ZOMBIEHORDE_HPP
+#endif
