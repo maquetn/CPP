@@ -6,7 +6,7 @@ int main() {
     heapZombie->announce();
     delete heapZombie; // Destroying heap zombie
 
-    // Creating zombies on the stack
+    // Creating zombies on the stack (implicitly deleted)
     randomChump("Stack Zombie");
 
     return 0;
