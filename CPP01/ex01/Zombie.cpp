@@ -1,17 +1,26 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie() {
-    // Default constructor for std::string automatically initializes it to empty
+void	Zombie::announce( void ) const
+{
+	std::cout << this->_name << " " << "BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-Zombie::~Zombie() {
-    std::cout << name << " is destroyed." << std::endl;
+Zombie::Zombie()
+{
+
 }
 
-void Zombie::setName(const std::string& newName) {
-    name = newName;
+void	Zombie::set_name(std::string new_name)
+{
+	this->_name = new_name;
 }
 
-void Zombie::announce() const {
-    std::cout << name << " Braiiiiiiinnnssss..." << std::endl;
+Zombie::Zombie(std::string name) : _name(name)
+{
+	announce();
+}
+
+Zombie::~Zombie()
+{
+	std::cout << "Destroyed " << this->_name << std::endl;
 }

@@ -1,13 +1,11 @@
 #include "Zombie.hpp"
 
-int main() {
-    // Creating on the heap
-    Zombie* heapZombie = newZombie("Heap Zombie");
-    heapZombie->announce();
-    delete heapZombie;
+int	main(void)
+{
+	Zombie	stack_zombie("Stack Zombie");
+	Zombie	*heap_zombie = newZombie("Heap Zombie");
 
-    // Creating on the stack (implicitly deleted)
-    randomChump("Stack Zombie");
-
-    return 0;
+	randomChump("Random Chump Zombie");
+	delete heap_zombie;
+	return (0);
 }

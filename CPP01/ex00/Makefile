@@ -3,21 +3,23 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nmaquet <nmaquet@student.42.fr>            +#+  +:+       +#+         #
+#    By: maquetn <maquetn@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/19 15:29:32 by nmaquet           #+#    #+#              #
-#    Updated: 2024/02/19 15:46:51 by nmaquet          ###   ########.fr        #
+#    Created: 2024/02/05 12:46:44 by maquetn           #+#    #+#              #
+#    Updated: 2024/04/11 16:04:51 by maquetn          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = zombie
-SRC     = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
-OBJ     = $(addprefix obj/, $(SRC:.cpp=.o))
-CPP     = c++
-CPPFLAGS    = -Wall -Wextra -Werror -std=c++98
+NAME	= zombie
 
-obj/%.o : %.cpp
-	@mkdir -p obj
+SRC		= Zombie.cpp newZombie.cpp randomChump.cpp main.cpp
+OBJ		= $(SRC:.cpp=.o)
+
+CPP		=	c++
+CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
+
+
+%.o : %.cpp
 	@$(CPP) $(CPPFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ)
@@ -25,11 +27,12 @@ $(NAME) : $(OBJ)
 
 all : $(NAME)
 
+
 clean :
-	@rm -rf obj
+	@rm -rf $(OBJ)
 
 fclean : clean
-	@rm -f $(NAME)
+	@rm -rf $(NAME)
 
 re : fclean all
 

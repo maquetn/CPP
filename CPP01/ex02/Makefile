@@ -6,13 +6,13 @@
 #    By: maquetn <maquetn@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/05 12:46:44 by maquetn           #+#    #+#              #
-#    Updated: 2024/04/11 16:36:13 by maquetn          ###   ########.fr        #
+#    Updated: 2024/04/11 16:36:48 by maquetn          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= horde
+NAME	= ref
 
-SRC		= Zombie.cpp zombieHorde.cpp main.cpp
+SRC		= main.cpp
 OBJ		= $(SRC:.cpp=.o)
 
 CPP		=	c++
