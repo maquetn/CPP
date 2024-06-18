@@ -1,16 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nmaquet <nmaquet@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 15:34:07 by nmaquet           #+#    #+#             */
-/*   Updated: 2024/02/19 15:49:27 by nmaquet          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-
 #ifndef ZOMBIE_HPP
 #define ZOMBIE_HPP
 
@@ -22,17 +9,12 @@ private:
     std::string name;
 
 public:
-    Zombie(std::string name) : name(name) {}
+    Zombie(std::string name);
     
-    void announce() const {
-        std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-    }
+    void announce() const;
 
-    ~Zombie() {
-        std::cout << name << " destroyed!" << std::endl;
-    }
+    ~Zombie();
 };
-
 
 Zombie* newZombie(std::string name);
 void randomChump(std::string name);
