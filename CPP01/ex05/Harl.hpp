@@ -11,7 +11,14 @@ private:
     void error();
 
 public:
-    void complain(const std::string& level);
+    Harl();
+    void complain(std::string level);
+    ~Harl();
 };
+
+typedef struct {
+    std::string debugString;
+    void (Harl::*f)();
+} t_level;
 
 #endif

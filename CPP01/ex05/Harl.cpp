@@ -1,6 +1,10 @@
 #include "Harl.hpp"
 #include <iostream>
 
+Harl::Harl() {
+
+}
+
 void Harl::debug() {
     std::cout << "DEBUG: I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!" << std::endl;
 }
@@ -17,24 +21,21 @@ void Harl::error() {
     std::cout << "ERROR: This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void Harl::complain(const std::string& level) {
-    // Define pointers to member functions
-    void (Harl::*complaintFunc)() = nullptr;
-
-    // Assign the appropriate member function based on the level
-    if (level == "DEBUG") {
-        complaintFunc = &Harl::debug;
-    } else if (level == "INFO") {
-        complaintFunc = &Harl::info;
-    } else if (level == "WARNING") {
-        complaintFunc = &Harl::warning;
-    } else if (level == "ERROR") {
-        complaintFunc = &Harl::error;
-    } else {
-        std::cout << "Unknown complaint level: " << level << std::endl;
-        return;
+void Harl::complain(std::string level) {
+    t_level debugLevel[4] = {
+            {"DEBUG", &Harl::debug},
+            {"INFO", &Harl::info},
+            {"WARNING", &Harl::warning},
+            {"ERROR", &Harl::error}
+    };
+    for (int i = 0; i < 4; i++) {
+        if (debugLevel[i].debugString == level) {
+            (this->*(debugLevel[i].f))();
+            return;
+        }
     }
+}
 
-    // Call the selected member function
-    (this->*complaintFunc)();
+Harl::~Harl() {
+
 }

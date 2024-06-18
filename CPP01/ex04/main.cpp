@@ -1,57 +1,47 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 
-void replaceAndWriteToFile(const std::string &filename, const std::string &s1, const std::string &s2) {
-    // Open input file
-    std::ifstream inputFile(filename);
-    if (!inputFile) {
-        std::cerr << "Error opening input file: " << filename << std::endl;
-        return;
+void replaceInFile(std::string fileName, std::string s1, std::string s2)
+{
+    std::string line;
+    std::string str;
+    std::string str2;
+    size_t pos;
+    
+    std::ifstream Myfile(fileName);
+    if(Myfile.is_open())
+    {
+        std::ofstream Myfile2(fileName + ".replace");
+        while (getline(Myfile, line))
+        {
+            str += line;
+            if(!Myfile.eof())
+                str += '\n';
+        }
+        pos = str.find(s1);
+
+        while (pos < str.length())
+        {
+            str.erase(pos, s1.length());
+            str.insert(pos, s2);
+            pos = str.find(s1, pos + s2.length()); 
+        }
+        Myfile2 << str;
+        Myfile2.close();
+        Myfile.close();
     }
-
-    // Read entire input file into a string
-    std::string content((std::istreambuf_iterator<char>(inputFile)), std::istreambuf_iterator<char>());
-    inputFile.close();
-
-    // Perform string replacement
-    size_t pos = 0;
-    while ((pos = content.find(s1, pos)) != std::string::npos) {
-        content.replace(pos, s1.length(), s2);
-        pos += s2.length(); // Move past the replaced part
-    }
-
-    // Create output filename
-    std::string outputFilename = filename + ".replace";
-
-    // Open output file
-    std::ofstream outputFile(outputFilename);
-    if (!outputFile) {
-        std::cerr << "Error creating output file: " << outputFilename << std::endl;
-        return;
-    }
-
-    // Write modified content to output file
-    outputFile << content;
-    outputFile.close();
-
-    std::cout << "Successfully wrote modified content to: " << outputFilename << std::endl;
+    else
+        std::cout << "File doesn't exist" << std::endl;
 }
 
-int main(int argc, char *argv[]) {
-    // Check for correct number of arguments
-    if (argc != 4) {
-        std::cerr << "Usage: " << argv[0] << " <filename> <s1> <s2>" << std::endl;
+int main(int ac, char **av)
+{
+    if (ac != 4)
+    {
+        std::cout << "Error args" << std::endl;
         return 1;
     }
-
-    // Get arguments
-    std::string filename = argv[1];
-    std::string s1 = argv[2];
-    std::string s2 = argv[3];
-
-    // Perform the replacement and write to file
-    replaceAndWriteToFile(filename, s1, s2);
-
+    else
+        replaceInFile(av[1], av[2], av[3]);
     return 0;
 }
